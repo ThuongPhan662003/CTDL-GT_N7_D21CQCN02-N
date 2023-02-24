@@ -164,3 +164,5 @@ void DSMB::Delete_DSMB(DSMB &DS ){
     }
 }
 
+void nhap();
+
