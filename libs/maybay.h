@@ -99,8 +99,8 @@ private:
     MayBay *data[MAXMB];
 public:
     DSMB();
-    void setsize(int size);
-    int getsize();
+    // void setsize(int size);
+    // int getsize();
     void getDSMB();
     bool Is_Empty(DSMB &DS);
     bool Is_Full(DSMB &DS);
@@ -112,12 +112,12 @@ public:
 };
 DSMB::DSMB(){
 }
-void DSMB::setsize(int size){
-    this->size=size;
-}
-int DSMB::getsize(){
-    return size;
-}
+// void DSMB::setsize(int size){
+//     this->size=size;
+// }
+// int DSMB::getsize(){
+//     return size;
+// }
 
 void DSMB::getDSMB(){
     for(int i=0;i<getsize();i++){
@@ -164,4 +164,3 @@ void DSMB::Delete_DSMB(DSMB &DS ){
     }
 }
 
-void nhap();
