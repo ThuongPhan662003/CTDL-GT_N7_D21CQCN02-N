@@ -15,14 +15,16 @@ public:
     MayBay();
     MayBay(char *SoHieuMB, char *LoaiMB, int SoDay, int SoDong);
     void setSoHieuMB(char *SoHieuMB);
-    char *getSoHieuMB();
+    char* getSoHieuMB();
     void setLoaiMB(char *LoaiMB);
-    char *getLoaiMB();
+    char* getLoaiMB();
     void setSoDay(int SoDay);
     int getSoDay();
     void setSoDong(int SoDong);
     int getSoDong();
+    int getSoCho();
     void show_MB();
+    bool Kiemtrasocho(int socho);
     ~MayBay();
 };
 MayBay::MayBay() {}
@@ -38,7 +40,7 @@ void MayBay::setSoHieuMB(char *SoHieuMB)
 {
     this->SoHieuMB = SoHieuMB;
 }
-char *MayBay::getSoHieuMB()
+char* MayBay::getSoHieuMB()
 {
     return SoHieuMB;
 }
@@ -46,7 +48,7 @@ void MayBay::setLoaiMB(char *LoaiMB)
 {
     this->LoaiMB = LoaiMB;
 }
-char *MayBay::getLoaiMB()
+char* MayBay::getLoaiMB()
 {
     return LoaiMB;
 }
@@ -66,8 +68,15 @@ int MayBay::getSoDong()
 {
     return SoDong;
 }
+int MayBay::getSoCho(){
+    return SoDay*SoDong;
+}
+
 void MayBay::show_MB(){
     cout<<getSoHieuMB()<<" "<<getLoaiMB()<<" "<<getSoDay()<<" "<<getSoDong()<<endl;
+}
+bool MayBay::Kiemtrasocho(int socho){
+    return socho>=20;
 }
 
 // typedef struct MAYBAY MB;
@@ -89,6 +98,7 @@ private:
     int size=0;
     MayBay *data[MAXMB];
 public:
+    DSMB();
     void setsize(int size);
     int getsize();
     void getDSMB();
@@ -98,7 +108,10 @@ public:
     void Insert_MB(DSMB &DS, MayBay &maybay);
     void Delete_MB(DSMB &DS, int index);
     int Find_MB(DSMB &DS,char *SoHieuMB);
+    void Delete_DSMB(DSMB &DS );
 };
+DSMB::DSMB(){
+}
 void DSMB::setsize(int size){
     this->size=size;
 }
@@ -145,5 +158,9 @@ int DSMB::Find_MB(DSMB &DS,char *SoHieuMB){
     }
     return -1;
 }
-
+void DSMB::Delete_DSMB(DSMB &DS ){
+    for(int i=0;i<DS.size;i++){
+        delete DS.data[i];
+    }
+}
 
